@@ -29,6 +29,8 @@ services:
             - ./docker/database/data:/var/lib/postgresql/data
         env_file:
             - .env
+        environment:
+            POSTGRES_DB: ${DATABASE_NAME}
 
     server:
         image: nginx:1.21-alpine
