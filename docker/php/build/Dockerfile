@@ -36,7 +36,7 @@ RUN apk upgrade && apk add --no-cache \
 
 RUN docker-php-ext-install \
         pdo \
-        pdo_pgsql
+        pdo_mysql
 
 RUN pecl install xdebug \
 &&  docker-php-ext-enable xdebug \

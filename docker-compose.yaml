@@ -20,15 +20,18 @@ services:
             - .env
 
     database:
-        image: postgres:14.3-alpine
+        image: mysql:8.0.32-debian
+        # restart: always
         networks: [scoring_system]
         ports: 
-            - ${DATABASE_PORT}:5432
+            - ${DATABASE_PORT}:3306
         volumes:
-            - /etc/timezone:/etc/timezone
-            - ./docker/database/data:/var/lib/postgresql/data
-        env_file:
-            - .env
+            - ./docker/database/data:/var/lib/mysql:delegated,rw
+        environment:
+            MYSQL_RANDOM_ROOT_PASSWORD: "true"
+            MYSQL_DATABASE: ${DATABASE_NAME}
+            MYSQL_USER: ${DATABASE_USER}
+            MYSQL_PASSWORD: ${DATABASE_PASSWORD}
 
     server:
         image: nginx:1.21-alpine
