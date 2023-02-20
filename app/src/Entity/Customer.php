@@ -55,7 +55,7 @@ class Customer
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -67,7 +67,7 @@ class Customer
         return $this;
     }
 
-    public function getSecondName(): ?string
+    public function getSecondName(): string
     {
         return $this->secondName;
     }
@@ -79,7 +79,7 @@ class Customer
         return $this;
     }
 
-    public function getPhoneNumber(): ?string
+    public function getPhoneNumber(): string
     {
         return $this->phoneNumber;
     }
@@ -103,7 +103,7 @@ class Customer
         return $this;
     }
 
-    public function getEducation(): ?string
+    public function getEducation(): string
     {
         return $this->education;
     }
@@ -115,7 +115,7 @@ class Customer
         return $this;
     }
 
-    public function isAgreedToThePersonalDataProcessing(): ?bool
+    public function isAgreedToThePersonalDataProcessing(): bool
     {
         return $this->agreedToThePersonalDataProcessing;
     }
