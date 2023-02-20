@@ -5,6 +5,7 @@ help: ## Show this help
 build: ## build the application
 	make restart
 	make composer_install
+	make migrate
 
 up: ## Up containers
 	docker-compose up -d --build
@@ -19,5 +20,8 @@ restart: ## Restart containers
 connect_app: ## Run shell in php container 
 	docker-compose exec -u www-data php sh
 
-composer_install:
+composer_install: ## Install php dependencies
 	docker-compose exec -u www-data php composer install
+
+migrate: ## Up database migrations
+	docker-compose exec -u www-data php bin/console d:m:m --no-interaction
