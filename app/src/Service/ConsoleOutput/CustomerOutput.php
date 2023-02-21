@@ -8,10 +8,7 @@ use App\Config\Education;
 use App\Entity\Customer;
 use App\Service\Scoring\CustomerScoringCalculator;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\OutputStyle;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 class CustomerOutput
 {
@@ -90,7 +87,7 @@ class CustomerOutput
                         $customer->getEmail(),
                         Education::from($customer->getEducation()),
                         $customer->isAgreedToThePersonalDataProcessing()
-                    )
+                    ),
                 ]
             );
     }

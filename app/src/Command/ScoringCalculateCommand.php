@@ -45,14 +45,16 @@ class ScoringCalculateCommand extends Command
                 $this->customerScoreUpdater->updateCustomerScore(
                     $this->repository->find($id),
                     true
-                ), $io
+                ),
+                $io
             );
         } else {
             $this->customerOutput->printCustomersInfo(
                 $this->customerScoreUpdater->updateCustomersScore(
                     $this->repository->findAll(),
                     true
-                ), $io
+                ),
+                $io
             );
         }
 
