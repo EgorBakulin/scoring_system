@@ -21,7 +21,7 @@ class CustomerScoringCalculator
         private EmailProviderIdenifier $emailProviderIdentifier
     ) {
     }
-    
+
     public function calculate(
         string $phoneNumber,
         string $email,
@@ -35,8 +35,9 @@ class CustomerScoringCalculator
             $this->calculateAgreedToThePersonalDataProcessing($agreedToThePersonalDataProcessing);
     }
 
-    private function calculatePhoneScoring(string $phoneNumber): int {
-        return match($this->mobileOperatorIdentifier->identifyNumber($phoneNumber)) {
+    public function calculatePhoneScoring(string $phoneNumber): int
+    {
+        return match ($this->mobileOperatorIdentifier->identifyNumber($phoneNumber)) {
             MobileOperator::Beeline => MobileOperatorScore::BEELINE_SCORE,
             MobileOperator::Megafon => MobileOperatorScore::MEGAFON_SCORE,
             MobileOperator::Mts => MobileOperatorScore::MTS_SCORE,
@@ -44,8 +45,9 @@ class CustomerScoringCalculator
         };
     }
 
-    private function calculateEmailScoring(string $email): int {
-        return match($this->emailProviderIdentifier->identifyEmailProvider($email)) {
+    public function calculateEmailScoring(string $email): int
+    {
+        return match ($this->emailProviderIdentifier->identifyEmailProvider($email)) {
             EmailProvider::gmail => EmailProviderScore::GMAIL_SCORE,
             EmailProvider::yandex => EmailProviderScore::YANDEX_SCORE,
             EmailProvider::mailRu => EmailProviderScore::MAIL_RU_SCORE,
@@ -53,7 +55,7 @@ class CustomerScoringCalculator
         };
     }
 
-    private function calculateAgreedToThePersonalDataProcessing(
+    public function calculateAgreedToThePersonalDataProcessing(
         bool $agreedToThePersonalDataProcessing
     ): int {
         if ($agreedToThePersonalDataProcessing) {
@@ -63,9 +65,9 @@ class CustomerScoringCalculator
         return AgreedToThePersonalDataProcessingScore::DISAGREED_SCORE;
     }
 
-    private function calculateEducationScoring(Education $education): int
+    public function calculateEducationScoring(Education $education): int
     {
-        return match($education) {
+        return match ($education) {
             Education::Secondary => EducationScore::SECONDARY_SCORE,
             Education::Special => EducationScore::SPECIAL_SCORE,
             Education::Higher => EducationScore::HIGHER_SCORE,

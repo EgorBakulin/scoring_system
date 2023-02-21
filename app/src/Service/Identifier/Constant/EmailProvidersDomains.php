@@ -11,7 +11,6 @@ class EmailProvidersDomains
         'googlemail.com',
         'google.com',
     ];
-                                
     public const YANDEX_DOMAINS = [
         'yandex.com',
         'yandex.ru',
@@ -20,7 +19,6 @@ class EmailProvidersDomains
         'yandex.ua',
         'ya.ru',
     ];
-
     public const MAIL_RU_DOMAINS = [
         'mail.ru',
         'inbox.ru',

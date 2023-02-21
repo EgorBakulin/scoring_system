@@ -17,7 +17,7 @@ class DashboardController extends AbstractDashboardController
     public function __construct(private AdminUrlGenerator $urlGenerator)
     {
     }
-    
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -31,7 +31,6 @@ class DashboardController extends AbstractDashboardController
         return Dashboard::new()
             ->setTitle('Scoring system')
             ->renderSidebarMinimized();
-        
     }
 
     public function configureMenuItems(): iterable
