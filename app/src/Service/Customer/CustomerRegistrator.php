@@ -7,15 +7,18 @@ namespace App\Service\Customer;
 use App\Dto\CustomerRegistrationFormInput;
 use App\Entity\Customer;
 use App\Repository\CustomerRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\Scoring\CustomerScoringCalculator;
 
-class CustomerRegistrator {
+class CustomerRegistrator
+{
     public function __construct(
-        private CustomerRepository $repository
-    ){
+        private CustomerRepository $repository,
+        private CustomerScoringCalculator $scoringCalculator
+    ) {
     }
 
-    public function register(CustomerRegistrationFormInput $input): void {
+    public function register(CustomerRegistrationFormInput $input): void
+    {
         $customer = new Customer(
             $input->firstName,
             $input->secondName,
@@ -23,6 +26,12 @@ class CustomerRegistrator {
             $input->email,
             $input->education->name,
             $input->agreedToThePersonalDataProcessing,
+            $this->scoringCalculator->calculate(
+                $input->phoneNumber,
+                $input->email,
+                $input->education,
+                $input->agreedToThePersonalDataProcessing
+            )
         );
 
         $this->repository->save($customer, true);
