@@ -35,7 +35,7 @@ class CustomerScoringCalculator
             $this->calculateAgreedToThePersonalDataProcessing($agreedToThePersonalDataProcessing);
     }
 
-    private function calculatePhoneScoring(string $phoneNumber): int {
+    public function calculatePhoneScoring(string $phoneNumber): int {
         return match($this->mobileOperatorIdentifier->identifyNumber($phoneNumber)) {
             MobileOperator::Beeline => MobileOperatorScore::BEELINE_SCORE,
             MobileOperator::Megafon => MobileOperatorScore::MEGAFON_SCORE,
@@ -44,7 +44,7 @@ class CustomerScoringCalculator
         };
     }
 
-    private function calculateEmailScoring(string $email): int {
+    public function calculateEmailScoring(string $email): int {
         return match($this->emailProviderIdentifier->identifyEmailProvider($email)) {
             EmailProvider::gmail => EmailProviderScore::GMAIL_SCORE,
             EmailProvider::yandex => EmailProviderScore::YANDEX_SCORE,
@@ -53,7 +53,7 @@ class CustomerScoringCalculator
         };
     }
 
-    private function calculateAgreedToThePersonalDataProcessing(
+    public function calculateAgreedToThePersonalDataProcessing(
         bool $agreedToThePersonalDataProcessing
     ): int {
         if ($agreedToThePersonalDataProcessing) {
@@ -63,7 +63,7 @@ class CustomerScoringCalculator
         return AgreedToThePersonalDataProcessingScore::DISAGREED_SCORE;
     }
 
-    private function calculateEducationScoring(Education $education): int
+    public function calculateEducationScoring(Education $education): int
     {
         return match($education) {
             Education::Secondary => EducationScore::SECONDARY_SCORE,
