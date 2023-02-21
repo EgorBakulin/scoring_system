@@ -24,7 +24,7 @@ class CustomerRegistrator
             $input->secondName,
             $input->phoneNumber,
             $input->email,
-            $input->education->name,
+            $input->education->value,
             $input->agreedToThePersonalDataProcessing,
             $this->scoringCalculator->calculate(
                 $input->phoneNumber,

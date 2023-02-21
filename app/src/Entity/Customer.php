@@ -51,7 +51,7 @@ class Customer
             ->setPhoneNumber($phoneNumber)
             ->setEmail($email)
             ->setEducation($education)
-            ->setAgreeToThePersonalDataProcessing($agreedToThePersonalDataProcessing)
+            ->setAgreedToThePersonalDataProcessing($agreedToThePersonalDataProcessing)
             ->setScoring($scoring);
     }
 
@@ -125,7 +125,7 @@ class Customer
         return $this->agreedToThePersonalDataProcessing;
     }
 
-    public function setAgreeToThePersonalDataProcessing(bool $agreedToThePersonalDataProcessing): self
+    public function setAgreedToThePersonalDataProcessing(bool $agreedToThePersonalDataProcessing): self
     {
         $this->agreedToThePersonalDataProcessing = $agreedToThePersonalDataProcessing;
 
