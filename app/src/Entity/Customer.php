@@ -33,13 +33,17 @@ class Customer
     #[ORM\Column]
     private bool $agreedToThePersonalDataProcessing;
 
+    #[ORM\Column]
+    private int $scoring;
+
     public function __construct(
         string $firstName,
         string $secondName,
         string $phoneNumber,
         string $email,
         string $education,
-        bool $agreedToThePersonalDataProcessing
+        bool $agreedToThePersonalDataProcessing,
+        int $scoring
     ) {
         $this
             ->setFirstName($firstName)
@@ -47,7 +51,8 @@ class Customer
             ->setPhoneNumber($phoneNumber)
             ->setEmail($email)
             ->setEducation($education)
-            ->setAgreeToThePersonalDataProcessing($agreedToThePersonalDataProcessing);
+            ->setAgreedToThePersonalDataProcessing($agreedToThePersonalDataProcessing)
+            ->setScoring($scoring);
     }
 
     public function getId(): ?int
@@ -120,9 +125,21 @@ class Customer
         return $this->agreedToThePersonalDataProcessing;
     }
 
-    public function setAgreeToThePersonalDataProcessing(bool $agreedToThePersonalDataProcessing): self
+    public function setAgreedToThePersonalDataProcessing(bool $agreedToThePersonalDataProcessing): self
     {
         $this->agreedToThePersonalDataProcessing = $agreedToThePersonalDataProcessing;
+
+        return $this;
+    }
+
+    public function getScoring(): int
+    {
+        return $this->scoring;
+    }
+
+    public function setScoring(int $scoring): self
+    {
+        $this->scoring = $scoring;
 
         return $this;
     }
