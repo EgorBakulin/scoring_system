@@ -25,3 +25,10 @@ composer_install: ## Install php dependencies
 
 migrate: ## Up database migrations
 	docker-compose exec -u www-data php bin/console d:m:m --no-interaction
+
+app_scoring_calculate: ## run Calculate scoring command
+	docker-compose exec -u www-data php bin/console app:scoring:calculate $(ARGS)
+
+load_fixtures: ## Load application fixtures
+	docker-compose exec -u www-data php bin/console d:f:l
+
