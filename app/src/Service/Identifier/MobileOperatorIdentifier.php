@@ -35,7 +35,7 @@ class MobileOperatorIdentifier
 
     private function normalizeNumber(string $phoneNumber): string
     {
-        return preg_replace('/^8/', '7', trim($phoneNumber, ' -+()'));
+        return preg_replace('/^8/', '7', preg_replace('/[^0-9]/', '', $phoneNumber));
     }
 }
     

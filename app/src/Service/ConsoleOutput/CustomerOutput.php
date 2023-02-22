@@ -73,7 +73,7 @@ class CustomerOutput
                 [
                     'agreed to the personal data processing',
                     $customer->isAgreedToThePersonalDataProcessing() ? '+' : '-',
-                    $this->scoringCalculator->calculateAgreedToThePersonalDataProcessing(
+                    $this->scoringCalculator->calculateAgreedToThePersonalDataProcessingScoring(
                         $customer->isAgreedToThePersonalDataProcessing()
                     ),
                 ]
