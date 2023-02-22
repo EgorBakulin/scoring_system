@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service\Scoring;
 
 use App\Config\Education;
-use App\Service\Identifier\EmailProviderIdenifier;
+use App\Service\Identifier\EmailProviderIdentifier;
 use App\Service\Identifier\MobileOperatorIdentifier;
 use App\Service\Identifier\Type\EmailProvider;
 use App\Service\Identifier\Type\MobileOperator;
@@ -18,10 +18,11 @@ class CustomerScoringCalculator
 {
     public function __construct(
         private MobileOperatorIdentifier $mobileOperatorIdentifier,
-        private EmailProviderIdenifier $emailProviderIdentifier
+        private EmailProviderIdentifier $emailProviderIdentifier
     ) {
     }
 
+    /** TODO: put data in one data transfer object should be a good idea */
     public function calculate(
         string $phoneNumber,
         string $email,
@@ -32,7 +33,7 @@ class CustomerScoringCalculator
             $this->calculatePhoneScoring($phoneNumber) +
             $this->calculateEmailScoring($email) +
             $this->calculateEducationScoring($education) +
-            $this->calculateAgreedToThePersonalDataProcessing($agreedToThePersonalDataProcessing);
+            $this->calculateAgreedToThePersonalDataProcessingScoring($agreedToThePersonalDataProcessing);
     }
 
     public function calculatePhoneScoring(string $phoneNumber): int
@@ -55,7 +56,7 @@ class CustomerScoringCalculator
         };
     }
 
-    public function calculateAgreedToThePersonalDataProcessing(
+    public function calculateAgreedToThePersonalDataProcessingScoring(
         bool $agreedToThePersonalDataProcessing
     ): int {
         if ($agreedToThePersonalDataProcessing) {
