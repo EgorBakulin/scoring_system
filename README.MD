@@ -34,4 +34,6 @@ F.e. `make app_scoring_calculate 1` recalculate score only for customer with id 
 
 And one fixture. you can run it with command `make load_fixtures`
 
+For execute tests run `make test`
+
 Also you can use other make commands run `make help` to show you command list with descriptions

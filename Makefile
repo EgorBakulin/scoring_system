@@ -32,3 +32,5 @@ app_scoring_calculate: ## run Calculate scoring command
 load_fixtures: ## Load application fixtures
 	docker-compose exec -u www-data php bin/console d:f:l
 
+test: ## Run project tests 
+	docker-compose exec -u www-data php bin/phpunit
